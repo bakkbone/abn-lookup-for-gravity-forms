@@ -1,0 +1,25 @@
+.itsg_abnlookup_response {
+	margin: 5px 0;
+    padding-left: 25px;
+    background: rgba(0, 0, 0, 0) url("../img/loading.gif") no-repeat scroll 0 20px; /* pre-load the loading gif */
+}
+
+.itsg_abnlookup_response.Active {
+    background: rgba(0, 0, 0, 0) url("../img/active.png") no-repeat scroll 0 0;
+	background-position: 0 center;
+}
+
+.itsg_abnlookup_response.Cancelled {
+    background: rgba(0, 0, 0, 0) url("../img/cancelled.png") no-repeat scroll 0 0;
+	background-position: 0 center;
+}
+
+.itsg_abnlookup_response.error {
+    background: rgba(0, 0, 0, 0) url("../img/error.png") no-repeat scroll 0 0;
+	background-position: 0 center;
+}
+
+.itsg_abnlookup_response.loading {
+    background: rgba(0, 0, 0, 0) url("../img/loading.gif") no-repeat;
+	background-position: 0 center;
+}
