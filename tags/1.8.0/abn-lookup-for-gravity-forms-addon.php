@@ -5,7 +5,7 @@
 if ( class_exists( "GFForms" ) ) {
 	GFForms::include_addon_framework();
 	class ITSG_GF_AbnLookup_Settings extends GFAddOn {
-		protected $_version = "2.0.0";
+		protected $_version = "1.8.0";
 		protected $_min_gravityforms_version = "2.5";
 		protected $_slug = "itsg_gf_abnlookup_settings";
 		protected $_full_path = __FILE__;
@@ -15,7 +15,7 @@ if ( class_exists( "GFForms" ) ) {
 		public function init(){
 			parent::init();
 			add_filter( "gform_submit_button", array( $this, "form_submit_button" ), 10, 2);
-        }
+        } // END init
 
 		// Add the text in the plugin settings to the bottom of the form if enabled for this form
 		function form_submit_button( $button, $form ){
@@ -25,104 +25,104 @@ if ( class_exists( "GFForms" ) ) {
 				$button = "<div>{$text}</div>" . $button;
 			}
 			return $button;
-		}
+		} // END form_submit_button
 
 		// add the options
 		public function plugin_settings_fields() {
 			$abnlookup_options = ITSG_GF_AbnLookup::get_options();
             return array(
                 array(
-                    "title"  => ABR_SETTINGS,
+                    "title"  => __( 'Settings', 'abn-lookup-for-gravity-forms' ),
                     "fields" => array(
                         array(
-                            "label"   => ABR_GUID,
+                            "label"   => __( 'GUID', 'abn-lookup-for-gravity-forms' ),
 							"name"    => "guid",
-                            "tooltip" => sprintf( ABR_GET_GUID, '<a target="_blank" href="http://abr.business.gov.au/webservices.aspx">', '</a>' ),
+                            "tooltip" => sprintf( __( 'To receive a GUID see %sweb services registration%s on the Australian Business Register website.', 'abn-lookup-for-gravity-forms' ), '<a target="_blank" href="http://abr.business.gov.au/webservices.aspx">', '</a>' ),
                             "type"    => "guid"
                         ),
 						array(
-                            "label"   => ABR_INC_CSS,
+                            "label"   => __( 'Include CSS styles', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "checkbox",
                             "name"    => "includecss",
-                            "tooltip" => ABR_INC_CSS_TOOLTIP,
+                            "tooltip" => __( 'This option allows you to control whether to use the CSS styles provided in the plugin. If this is not enabled you will need to apply styles through your theme.', 'abn-lookup-for-gravity-forms' ),
                             "choices" => array(
                                 array(
-                                    "label" => ABR_YES,
+                                    "label" => "Yes",
                                     "name"  => "includecss",
 									"default_value" => true
                                 )
                             )
                         ),
 						array(
-                            "label"   => ABR_TIMEOUT,
+                            "label"   => __( 'Lookup timeout (seconds)', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "text",
                             "name"    => "lookup_timeout",
-                            "tooltip" => ABR_TIMEOUT_TOOLTIP,
+                            "tooltip" => __( 'This options controls the amount of time, in seconds, before a request to the ABR lookup system will timeout.', 'abn-lookup-for-gravity-forms' ),
                             "default_value" => $abnlookup_options['lookup_timeout']
                         ),
 						array(
-                            "label"   => ABR_RETRIES,
+                            "label"   => __( 'Lookup retries', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "text",
                             "name"    => "lookup_retries",
-                            "tooltip" => ABR_RETRIES_TOOLTIP,
+                            "tooltip" => __( 'This options controls the number of retries when a request to the ABR lookup system has failed. When all retries have been used the field will return the "Error comminicating message" error message.', 'abn-lookup-for-gravity-forms' ),
                             "default_value" => $abnlookup_options['lookup_retries']
                         )
                     )
                 ), array(
-                    "title"  => ABR_VAL_MSG,
+                    "title"  => __( 'Validation messages', 'abn-lookup-for-gravity-forms' ),
                     "fields" => array(
                         array(
-                            "label"   => ABR_VAL_NOT_VALID,
+                            "label"   => __( 'ABN not valid', 'abn-lookup-for-gravity-forms' ),
 							"name"    => "validation_message_not_valid",
-                            "tooltip" => ABR_VAL_NOT_VALID_TOOLTIP,
+                            "tooltip" => __( 'This message is displayed to the user if they enter a ABN that is not valid.', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "textarea",
                             "class"   => "medium",
 							"default_value" => $abnlookup_options['validation_message_not_valid']
                         ),
 						array(
-                            "label"   => ABR_VAL_NOT_ACTIVE,
+                            "label"   => __( 'ABN not active', 'abn-lookup-for-gravity-forms' ),
 							"name"    => "validation_message_activeabn",
-                            "tooltip" => ABR_VAL_NOT_ACTIVE_TOOLTIP,
+                            "tooltip" => __( 'This message is displayed to the user if they enter a ABN is not active.', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "textarea",
                             "class"   => "medium",
 							"default_value" => $abnlookup_options['validation_message_activeabn']
                         ),
 						array(
-                            "label"   => ABR_VAL_NOTREG,
+                            "label"   => __( 'ABN not registered for GST', 'abn-lookup-for-gravity-forms' ),
 							"name"    => "validation_message_reggst",
-                            "tooltip" => ABR_VAL_NOTREG_TOOLTIP,
+                            "tooltip" => __( 'This message is displayed to the user if they enter a ABN that is not registered for GST and the field validation is set to only allow ABNs that are GST registered.', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "textarea",
                             "class"   => "medium",
 							"default_value" => $abnlookup_options['validation_message_reggst']
                         ),
 						array(
-                            "label"   => ABR_VAL_REG,
+                            "label"   => __( 'ABN registered for GST', 'abn-lookup-for-gravity-forms' ),
 							"name"    => "validation_message_notreggst",
-                            "tooltip" => ABR_VAL_REG_TOOLTIP,
+                            "tooltip" => __( 'This message is displayed to the user if they enter a ABN is registered for GST and the field validation is set to only allow ABNs that are not registered for GST.', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "textarea",
                             "class"   => "medium",
 							"default_value" => $abnlookup_options['validation_message_notreggst']
                         ),
 						array(
-                            "label"   => ABR_VAL_LENGTH,
+                            "label"   => __( 'ABN not correct length', 'abn-lookup-for-gravity-forms' ),
 							"name"    => "validation_message_11_char",
-                            "tooltip" => ABR_VAL_LENGTH_TOOLTIP,
+                            "tooltip" => __( 'This message is displayed to the user if they enter a value into the ABN field that does not contain the required 11 characters that make up an ABN.', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "textarea",
                             "class"   => "medium",
 							"default_value" => $abnlookup_options['validation_message_11_char']
                         ),
 						array(
-                            "label"   => ABR_VAL_LOADING,
+                            "label"   => __( 'Loading message', 'abn-lookup-for-gravity-forms' ),
 							"name"    => "validation_message_loading",
-                            "tooltip" => ABR_VAL_LOADING_TOOLTIP,
+                            "tooltip" => __( 'This message is displayed to the user when the ABN Lookup is running.', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "textarea",
                             "class"   => "medium",
 							"default_value" => $abnlookup_options['validation_message_loading']
                         ),
 						array(
-                            "label"   => ABR_VAL_ERROR,
+                            "label"   => __( 'Error comminicating message', 'abn-lookup-for-gravity-forms' ),
 							"name"    => "validation_message_error_communicating",
-                            "tooltip" => ABR_VAL_ERROR,
+                            "tooltip" => __( 'This message is displayed to the user when the ABN Lookup script has failed to communicate with the Australian Business Register more than three times.', 'abn-lookup-for-gravity-forms' ),
                             "type"    => "textarea",
                             "class"   => "medium",
 							"default_value" => $abnlookup_options['validation_message_error_communicating']
@@ -130,7 +130,7 @@ if ( class_exists( "GFForms" ) ) {
                     )
                 )
             );
-        }
+        } // END plugin_settings_fields
 
 		public function settings_guid(){
                 $this->settings_text(
@@ -141,9 +141,9 @@ if ( class_exists( "GFForms" ) ) {
                 );
 				printf(
 					'<div><p>%s</p></div>',
-						sprintf( ABR_GET_GUID, '<a target="_blank" href="http://abr.business.gov.au/webservices.aspx">', '</a>' )
+						sprintf( __( 'To receive a GUID see %sweb services registration%s on the Australian Business Register website.', 'abn-lookup-for-gravity-forms' ), '<a target="_blank" href="http://abr.business.gov.au/webservices.aspx">', '</a>' )
 				);
-        }
+        } // END settings_guid
 
 		public function styles() {
 			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['gform_debug'] ) ? '' : '.min';
@@ -160,7 +160,7 @@ if ( class_exists( "GFForms" ) ) {
 			);
 
 			return array_merge( parent::styles(), $styles );
-		}
+		} // END styles
 
 		public function requires_styles( $form, $is_ajax ) {
 			$abnlookup_options = ITSG_GF_AbnLookup::get_options();
@@ -176,7 +176,7 @@ if ( class_exists( "GFForms" ) ) {
 			}
 
 			return false;
-		}
+		} // END requires_styles
 
 		public function scripts() {
 			$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG || isset( $_GET['gform_debug'] ) ? '' : '.min';
@@ -204,16 +204,16 @@ if ( class_exists( "GFForms" ) ) {
 			);
 
 			return array_merge( parent::scripts(), $scripts );
-		}
+		} // END scripts
 
 		function requires_admin_js() {
 			return GFCommon::is_form_editor();
-		}
+		} // END requires_admin_js
 
 		public function localize_scripts( $form, $is_ajax ) {
 			// Localize the script with new data
-			$text_yes = ABR_YES;
-			$text_no = ABR_NO;
+			$text_yes = __( 'Yes', 'abn-lookup-for-gravity-forms' );
+			$text_no = __( 'No', 'abn-lookup-for-gravity-forms' );
 			$gst_value_yes = apply_filters( 'itsg_gf_abnlookup_gst_value_yes', $text_yes, $form['id'] );
 			$gst_value_no = apply_filters( 'itsg_gf_abnlookup_gst_value_no', $text_no, $form['id'] );
 
@@ -239,8 +239,8 @@ if ( class_exists( "GFForms" ) ) {
 				'validation_message_not_valid' => strip_tags( $abnlookup_options['validation_message_not_valid'], '<strong><a><u><i>' ),
 				'validation_message_error_communicating' => strip_tags( $abnlookup_options['validation_message_error_communicating'], '<strong><a><u><i>' ),
 				'validation_message_11_char' => strip_tags($abnlookup_options['validation_message_11_char'], '<strong><a><u><i>' ),
-				'text_checking' => esc_js( ABR_CHECKING ),
-				'text_check_abn' => esc_js( ABR_CHECK_ABN ),
+				'text_checking' => esc_js( __( 'Checking', 'abn-lookup-for-gravity-forms') ),
+				'text_check_abn' => esc_js( __( 'Check ABN', 'abn-lookup-for-gravity-forms') ),
 				'gst_value_yes' => esc_js( $gst_value_yes ),
 				'gst_value_no' => esc_js( $gst_value_no ),
 				'lookup_timeout' => esc_js( ( int ) abs( $abnlookup_options['lookup_timeout'] * 1000 ) ),
@@ -249,7 +249,7 @@ if ( class_exists( "GFForms" ) ) {
 
 			wp_localize_script( 'abnlookup-script', 'gf_abnlookup_settings', $settings_array );
 
-		}
+		} // END localize_scripts
 
 		public function requires_scripts( $form, $is_ajax ) {
 			if ( ! $this->is_form_editor() && is_array( $form ) ) {
@@ -266,7 +266,7 @@ if ( class_exists( "GFForms" ) ) {
 			}
 
 			return false;
-		}
+		} // END requires_scripts
 
     }
     new ITSG_GF_AbnLookup_Settings();

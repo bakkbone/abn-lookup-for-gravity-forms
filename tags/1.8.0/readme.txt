@@ -1,19 +1,18 @@
 ﻿=== ABN Lookup for Gravity Forms ===
-Contributors: bakkbone,ovann86
-Donate link: https://ko-fi.com/bakkbone_scott
+Contributors: ovann86
+Donate link: https://www.itsupportguides.com/donate/
 Tags: gravity forms, forms, ajax, abn, australian business number, australian business register
-Requires at least: 6.0
-Tested up to: 6.1.1
-Requires PHP: 7.4
-Stable tag: 2.0.0
-License: GNU General Public License (GPL) 3.0
-License URI: https://www.gnu.org/licenses/gpl.html
+Requires at least: 5.0
+Tested up to: 5.8
+Stable tag: 1.8.0
+License: GPLv2
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Integrate the Australian Business Register ABN Lookup tool in Gravity Forms
 
 == Description ==
 
-> This plugin is an add-on for the Gravity Forms plugin. If you don't yet own a license for Gravity Forms - <a href="https://rocketgenius.pxf.io/bakkbone" target="_blank">buy one now</a>! (affiliate link)
+> This plugin is an add-on for the Gravity Forms plugin. If you don't yet own a license for Gravity Forms - <a href="https://rocketgenius.pxf.io/dbOK" target="_blank">buy one now</a>! (affiliate link)
 
 **What does this plugin do?**
 
@@ -28,7 +27,9 @@ Includes an **easy to use settings page** that allows you to configure:
 * disable plugin CSS styles - allowing you to create your own styles
 * customise error messages and prompts displayed to form users
 
-**How do I use the plugin?**
+> See a demo of this plugin at [demo.itsupportguides.com/abn-lookup-for-gravity-forms](http://demo.itsupportguides.com/abn-lookup-for-gravity-forms/ "demo website")
+
+**How to I use the plugin?**
 
 1. Install and activate the plugin.
 1. Open the ABN Lookup for Gravity forms settings page (Gravity Forms -> Settings -> ABN Lookup menu) and enter your unique GUID (necessary to use the plugin features - provided by the Australian Business Register, see [web services registration](http://abr.business.gov.au/webservices.aspx "Australian Business Register web services registration website"))
@@ -53,7 +54,7 @@ Please take the time to review the plugin. Your feedback is important and will h
 
 *Gravity Forms is a trademark of Rocketgenius, Inc.*
 
-*This plugin is provided “as is” without warranty of any kind, expressed or implied. The author shall not be liable for any damages, including but not limited to, direct, indirect, special, incidental or consequential damages or losses that occur out of the use or inability to use the plugin.*
+*This plugins is provided “as is” without warranty of any kind, expressed or implied. The author shall not be liable for any damages, including but not limited to, direct, indirect, special, incidental or consequential damages or losses that occur out of the use or inability to use the plugin.*
 
 == Installation ==
 
@@ -69,7 +70,7 @@ Please take the time to review the plugin. Your feedback is important and will h
 
 **To pre-fill GST status from an ABN Lookup field**
 
-1. Add a 'Radio Buttons' field
+1.  Add a 'Radio Buttons' field
 1. Place a tick next to the 'GST results field' option
 1. Using the 'Link ABN Lookup field' drop down select the ABN Lookup field to link to the field to
 
@@ -79,7 +80,7 @@ Please take the time to review the plugin. Your feedback is important and will h
 
 A range of options can be found under the Gravity Forms 'ABN Lookup' settings menu.
 
-**How do I change the value attribute of the GST result field?**
+**How do I change the value attribute of the GST result field**
 
 Two filters are available for customising the 'value' attribute for the GST result field:
 
@@ -113,11 +114,6 @@ function my_itsg_gf_abnlookup_gst_value_no( $text_no, $form_id ) {
 1. Shows ABN Lookup field after returning values, complete with pre-filled fields.
 
 == Changelog ==
-
-= 2.0.0 =
-* Change ownership - BAKKBONE Australia taking on development of this plugin.
-* DEV: Fix known bug with ABN Lookup tab not displaying in form editor.
-* TWEAK: Improve plugin localisation.
 
 = 1.8.0 =
 * Fix: update plugin to be compatible with PHP 8.0
@@ -226,7 +222,3 @@ function my_itsg_gf_abnlookup_gst_value_no( $text_no, $form_id ) {
 = 1.0 =
 
 * First public release.
-
-== Upgrade Notice ==
-= 2.0.0 =
-Fixes major display issue in form editor.
