@@ -30,7 +30,7 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 					success: function(response){
 						if(typeof response !== 'undefined' ){
 							try {
-								console.log (response);
+								// console.log (response);
 								itsg_abnlookup_checkabn_button.val( text_check_abn );
 								var result = JSON.parse(response);
 								if ( result["exception"] != undefined ) {
@@ -69,7 +69,7 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 									gform_abnlookup_entity_effective_from_input.prop( 'readonly', false );
 									gform_abnlookup_gst_effective_from_input.prop( 'readonly', false );
 								} else if ( result['businessEntity'] != undefined ) {
-									console.log(result['businessEntity']);
+									// console.log(result['businessEntity']);
 									var entityTypeCode = result['businessEntity']['entityType']['entityTypeCode'];
 									var entityType = result['businessEntity']['entityType']['entityDescription'];
 									var entityStatus = result['businessEntity']['entityStatus']['entityStatusCode'];
@@ -172,7 +172,7 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 									gform_abnlookup_entity_effective_from.show();
 								}
 							} catch( error ){
-								console.log( response );
+								// console.log( response );
 								itsg_abnlookup_response.text( error );
 								itsg_abnlookup_response.removeClass( 'loading Active Cancelled' );
 								itsg_abnlookup_response.addClass( 'error validation_message' );
@@ -278,14 +278,14 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 		gform_abnlookup_field.unbind( 'change' ).change( function() {
 			var numbersOnly = $( this ).val().replace(/\D/g, '' );
 			if ( 11 == numbersOnly.length ) {
-				console.log( numbersOnly );
+				// console.log( numbersOnly );
 				var abn = numbersOnly;
 				var data = {
 					'action': 'itsg_gf_abnlookup_check_ajax',
 					'abn': abn
 				};
 				if( request && 4 !== request.readyState ){
-					console.log( 'Abort! -- another request has been submitted.' )
+					// console.log( 'Abort! -- another request has been submitted.' )
 					request.abort();
 				}
 
@@ -332,7 +332,7 @@ jQuery( document ).bind( 'gform_post_render gform_post_conditional_logic', funct
 		var field_dateFormat = abnlookup_fields[ key ]['dateFormat'];
 
 		if( typeof field_validate_abnlookup !== 'undefined' ) {
-			console.log( 'abn-lookup-for-gravity-forms :: field_id: ' + field_id + ' field_validate_abnlookup: ' + field_validate_abnlookup + ' field_dateFormat: ' + field_dateFormat );
+			// console.log( 'abn-lookup-for-gravity-forms :: field_id: ' + field_id + ' field_validate_abnlookup: ' + field_validate_abnlookup + ' field_dateFormat: ' + field_dateFormat );
 
 			itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_dateFormat );
 

@@ -19,8 +19,6 @@ if ( ! defined(  'ABSPATH' ) ) {
 	die();
 }
 
-load_plugin_textdomain( 'abn-lookup-for-gravity-forms', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
-
 add_action( 'admin_notices', array( 'ITSG_GF_AbnLookup', 'admin_warnings' ), 20);
 
 //register_activation_hook( __FILE__, array( 'ITSG_GF_AbnLookup', 'activation' ) ); // redundant - using native WordPress transients
@@ -54,14 +52,14 @@ if ( !class_exists( 'ITSG_GF_AbnLookup' ) ) {
 
 				//add_action( 'itsg_abnlookup_clear_cache_cron', array( $this, 'clear_database_cache' ) ); // redundant - using native WordPress transients
 
+				// localisation
+				require_once( plugin_dir_path( __FILE__ ).'localisation.php' );
+				
 				//  functions for fields
 				require_once( plugin_dir_path( __FILE__ ).'abn-lookup-for-gravity-forms-fields.php' );
 
 				// addon framework
-				require_once( plugin_dir_path( __FILE__ ).'localisation.php' );
-				
-				// localisation
-				require_once( plugin_dir_path( __FILE__ ).'abn-lookup-for-gravity-forms-fields.php' );
+				require_once( plugin_dir_path( __FILE__ ).'abn-lookup-for-gravity-forms-addon.php' );
 
 				// ajax hook for users that are logged in
 				add_action( 'wp_ajax_itsg_gf_abnlookup_check_ajax', array( $this, 'itsg_gf_abnlookup_check_ajax' ) );
@@ -78,14 +76,14 @@ if ( !class_exists( 'ITSG_GF_AbnLookup' ) ) {
          */
 		function plugin_action_links( $links ) {
 			$action_links = array(
-				'settings' => '<a href="' . admin_url( 'admin.php?page=gf_settings&subview=itsg_gf_abnlookup_settings' ) . '" title="' . esc_attr( ABR_1 ) . '">' . ABR_SETTINGS . '</a>',
+				'settings' => '<a href="' . esc_url( add_query_arg( array( 'page' => 'gf_settings', 'subview' => 'itsg_gf_abnlookup_settings' ), get_admin_url() . 'admin.php' ) ) . '" title="' . esc_attr( ABR_1 ) . '">' . ABR_SETTINGS . '</a>',
 			);
 
 			return array_merge( $action_links, $links );
 		}
 
 		/*
-         * Ran when plugin is activated
+         * Run when plugin is activated
 		 * - adds daily cron job to clear ABN Lookup cache
          */
 		public static function activation() {
@@ -93,7 +91,7 @@ if ( !class_exists( 'ITSG_GF_AbnLookup' ) ) {
 		}
 
 		/*
-         * Ran when plugin is deactivated
+         * Run when plugin is deactivated
 		 * - clear ABN Lookup cache
 		 * - delete daily cron job that clears ABN Lookup cache
 		 */
@@ -226,7 +224,7 @@ if ( !class_exists( 'ITSG_GF_AbnLookup' ) ) {
 			if ( !self::is_gravityforms_installed() ) {
 				$html = sprintf(
 					'<div class="error"><h3>%s</h3><p>%s</p><p>%s</p></div>',
-						__( 'Warning', 'abn-lookup-for-gravity-forms' ),
+						ABR_WARNING,
 						sprintf ( ABR_REQUIRE_GF, '<strong>'.ABR_PLUGIN_TITLE.'</strong>' ),
 						sprintf ( ABR_UPDATE_GF, '<a target="_blank" href="https://rocketgenius.pxf.io/bakkbone">', '</a>' )
 				);
@@ -234,7 +232,7 @@ if ( !class_exists( 'ITSG_GF_AbnLookup' ) ) {
 			} elseif ( '' == $abnlookup_options['guid'] ) {
 				$html = sprintf(
 					'<div class="error"><h3>%s</h3><p>%s</p><p>%s</p><p>%s</p></div>',
-						__( 'Warning', 'abn-lookup-for-gravity-forms' ),
+						ABR_WARNING,
 						sprintf ( ABR_REQ_GUID, '<strong>'.ABR_PLUGIN_TITLE.'</strong>' ),
 						sprintf ( ABR_GET_GUID, '<a target="_blank" href="http://abr.business.gov.au/webservices.aspx">', '</a>' ),
 						sprintf ( ABR_USE_GUID, '<a href="' . admin_url( 'admin.php?page=gf_settings&subview=itsg_gf_abnlookup_settings' ) .'">', '</a>' )

@@ -19,7 +19,7 @@ Integrate the Australian Business Register ABN Lookup tool in Gravity Forms
 
 * connect your forms to the [Australian Business Register ABN Lookup tool](http://abr.business.gov.au "Australian Business Register website")
 * verify the ABN status and entity details
-* prefill ABN status, entity name, entity type, location, GST status, GST registered date, entity date into form fields
+* pre-fill ABN status, entity name, entity type, location, GST status, GST registered date, entity date into form fields
 * use conditional logic and validation to enforce which entities can complete your form
 
 Includes an **easy to use settings page** that allows you to configure:
@@ -27,6 +27,8 @@ Includes an **easy to use settings page** that allows you to configure:
 * enter your unique GUID (necessary to use the plugin features - provided by the Australian Business Register, see [web services registration](http://abr.business.gov.au/webservices.aspx "Australian Business Register web services registration website"))
 * disable plugin CSS styles - allowing you to create your own styles
 * customise error messages and prompts displayed to form users
+
+> See a demo of this plugin at [staging.bkbn.au/abn-lookup-for-gravity-forms](https://staging.bkbn.au/abn-lookup-for-gravity-forms/ "Demonstration Site")
 
 **How do I use the plugin?**
 
@@ -137,7 +139,7 @@ function my_itsg_gf_abnlookup_gst_value_no( $text_no, $form_id ) {
 * Feature: improve handling to minimise someone attempting to make a field BOTH an ABN Lookup field AND result field.
 
 = 1.6.4 =
-* Feature: better handling when an ABN lookup field hasnt been selected for an ABN result field in the form settings.
+* Feature: better handling when an ABN lookup field hasn't been selected for an ABN result field in the form settings.
 
 = 1.6.3 =
 * Maintenance: add keyup() event to radio fields when GST yes/no result cleared. For example, when an existing ABN has been entered and later removed.
@@ -146,12 +148,12 @@ function my_itsg_gf_abnlookup_gst_value_no( $text_no, $form_id ) {
 * Maintenance: add keyup() event to radio fields when GST yes/no result has been updated. Makes it easier to build conditional logic and build number field calculations based on GST status (e.g. GST rate).
 
 = 1.6.1 =
-* Feature: add options to control abn lookup timeout and number of retries before lookup fails. Default remains 5 seconds before timeout and 3 retries.
+* Feature: add options to control ABN Lookup timeout and number of retries before lookup fails. Default remains 5 seconds before timeout and 3 retries.
 
 = 1.6.0 =
 * Feature: change field validation so that ABN Lookup fields can be set as mandatory (or not), separate from the ABN validation options (registered for GST, is valid etc)
 * Maintenance: change how plugin checks for Gravity Forms being installed and active
-* Maintenance: add additional sanitization for ABNs provided by users and passed to the ABR system
+* Maintenance: add additional sanitisation for ABNs provided by users and passed to the ABR system
 
 = 1.5.0 =
 * Feature: Add filter to allow custom radio field input values for GST result fields
@@ -221,7 +223,7 @@ function my_itsg_gf_abnlookup_gst_value_no( $text_no, $form_id ) {
 = 1.0.1 =
 
 * FIX: Revise JavaScript to resolve issue with linked fields displaying when ABN is not valid.
-* FIX: Revise JavaScript to trigger change event when linked fields are prefilled. This allows Gravity Forms conditional logic to be used against the linked fields.
+* FIX: Revise JavaScript to trigger change event when linked fields are pre-filled. This allows Gravity Forms conditional logic to be used against the linked fields.
 
 = 1.0 =
 

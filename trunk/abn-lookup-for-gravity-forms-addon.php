@@ -8,24 +8,14 @@ if ( class_exists( "GFForms" ) ) {
 		protected $_version = "2.0.0";
 		protected $_min_gravityforms_version = "2.5";
 		protected $_slug = "itsg_gf_abnlookup_settings";
+		protected $path = 'abn-lookup-for-gravity-forms/abn-lookup-for-gravity-forms.php';
 		protected $_full_path = __FILE__;
-		protected $_title = "ABN Lookup for Gravity Forms";
-		protected $_short_title = "ABN Lookup";
+		protected $_title = ABR_PLUGIN_TITLE;
+		protected $_short_title = ABR_LOOKUP;
 
 		public function init(){
 			parent::init();
-			add_filter( "gform_submit_button", array( $this, "form_submit_button" ), 10, 2);
         }
-
-		// Add the text in the plugin settings to the bottom of the form if enabled for this form
-		function form_submit_button( $button, $form ){
-			$settings = $this->get_form_settings( $form );
-			if( isset( $settings["enabled"] ) && true == $settings["enabled"] ){
-				$text = $this->get_plugin_setting( "mytextbox" );
-				$button = "<div>{$text}</div>" . $button;
-			}
-			return $button;
-		}
 
 		// add the options
 		public function plugin_settings_fields() {
