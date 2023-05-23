@@ -3,9 +3,9 @@ Contributors: bakkbone,ovann86
 Donate link: https://ko-fi.com/bakkbone_scott
 Tags: gravity forms, forms, ajax, abn, australian business number, australian business register
 Requires at least: 6.0
-Tested up to: 6.1.1
+Tested up to: 6.2.2
 Requires PHP: 7.4
-Stable tag: 2.0.0
+Stable tag: 1.9.1
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
@@ -49,7 +49,7 @@ Please leave a detailed message on the support tab.
 
 **Let me know what you think**
 
-Please take the time to review the plugin. Your feedback is important and will help me understand the value of this plugin.
+Please take the time to review the plugin. Your feedback is important and will help us understand the value of this plugin.
 
 **Disclaimer**
 
@@ -118,6 +118,9 @@ function my_itsg_gf_abnlookup_gst_value_no( $text_no, $form_id ) {
 
 = 2.0.0 =
 * Change ownership - BAKKBONE Australia taking on development of this plugin.
+* TWEAK: Revert plugin localisation for compatibility.
+
+= 1.9.0 =
 * DEV: Fix known bug with ABN Lookup tab not displaying in form editor.
 * TWEAK: Improve plugin localisation.
 

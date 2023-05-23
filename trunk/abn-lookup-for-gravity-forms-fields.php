@@ -106,8 +106,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				'validation_message_not_valid' => strip_tags( $abnlookup_options['validation_message_not_valid'], '<strong><a><u><i>' ),
 				'validation_message_error_communicating' => strip_tags( $abnlookup_options['validation_message_error_communicating'], '<strong><a><u><i>' ),
 				'validation_message_11_char' => strip_tags($abnlookup_options['validation_message_11_char'], '<strong><a><u><i>' ),
-				'text_checking' => esc_js( ABR_CHECKING ),
-				'text_check_abn' => esc_js( ABR_CHECK_ABN ),
+				'text_checking' => esc_js( __('Checking', 'abn-lookup-for-gravity-forms') ),
+				'text_check_abn' => esc_js( __('Check ABN', 'abn-lookup-for-gravity-forms') ),
 			);
 
 			wp_localize_script( 'abnlookup-script', 'gf_abnlookup_settings', $settings_array );
@@ -386,8 +386,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				foreach( $form['fields'] as &$field )  {
 					if ( 'abnlookup_entity_gst' == self::is_abnlookup_field( $field ) ) {
 						// Force GST field 'Yes' and 'No' options
-						$text_yes = ABR_YES;
-						$text_no = ABR_NO;
+						$text_yes = __('Yes', 'abn-lookup-for-gravity-forms');
+						$text_no = __('No', 'abn-lookup-for-gravity-forms');
 						$value_yes = apply_filters( 'itsg_gf_abnlookup_gst_value_yes', $text_yes, $form['id'] );
 						$value_no = apply_filters( 'itsg_gf_abnlookup_gst_value_no', $text_no, $form['id'] );
 						$field->choices =  array (
@@ -419,11 +419,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 							<ul class="gfield_radio">
 								<li>
 									<input type="radio" disabled="disabled">
-									<label>' . ABR_YES . '</label>
+									<label>' . __('Yes', 'abn-lookup-for-gravity-forms') . '</label>
 								</li>
 								<li>
 									<input type="radio" disabled="disabled">
-									<label>' . ABR_NO . '</label>
+									<label>' . __('No', 'abn-lookup-for-gravity-forms') . '</label>
 								</li>
 							</ul>
 							</div>';
@@ -450,7 +450,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 							$abn_details_message = $entityStatus .' - '.$entityName;
 						}
 					}
-					$content = preg_replace( "/\/>/", "/><input type='button' value='" . ABR_CHECK_ABN . "' class='itsg_abnlookup_checkabn itsg_abnlookup_checkabn_{$field['id']} gform_button button' onclick='jQuery( \".gform_abnlookup_field_{$field['id']} input\" ).trigger( \"change\" )'>", $content, 1 );
+					$content = preg_replace( "/\/>/", "/><input type='button' value='" . __('Check ABN', 'abn-lookup-for-gravity-forms') . "' class='itsg_abnlookup_checkabn itsg_abnlookup_checkabn_{$field['id']} gform_button button' onclick='jQuery( \".gform_abnlookup_field_{$field['id']} input\" ).trigger( \"change\" )'>", $content, 1 );
 					$content .= "<div role='alert' class='itsg_abnlookup_response itsg_abnlookup_response_{$field['id']} {$entityStatus}'>{$abn_details_message}</div>";
 				} elseif ( 'abnlookup_gst_effective_from' == self::is_abnlookup_field( $field ) || 'abnlookup_entity_effective_from' == self::is_abnlookup_field( $field ) ) {
 					// remove datepicker
@@ -513,11 +513,11 @@ if ( ! defined( 'ABSPATH' ) ) {
          * Tooltip for field in form editor
          */
 		public static function field_tooltips( $tooltips ){
-			$tooltips["form_field_enable_abnlookup"] = "<h6>".ABR_ENABLE."</h6>".ABR_ENABLE_TOOLTIP;
-			$tooltips["form_field_validate_abnlookup"] = "<h6>".ABR_VALIDATION."</h6>".ABR_VALIDATION_TOOLTIP;
-			$tooltips["form_field_enable_abnlookup_gst"] = "<h6>".ABR_GST_LINK."</h6>".ABR_GST_LINK_TOOLTIP;
-			$tooltips["form_field_link_abnlookup"] = "<h6>".ABR_LINK."</h6>".ABR_LINK_TOOLTIP;
-			$tooltips["form_field_enable_abnlookup_entity_results"] = "<h6>".ABR_RESULT."</h6>".ABR_RESULT_TOOLTIP;
+			$tooltips["form_field_enable_abnlookup"] = "<h6>".__('Enable ABN Lookup', 'abn-lookup-for-gravity-forms')."</h6>".__('Check this box to integrate this field with the Australian Government ABN Lookup tool.', 'abn-lookup-for-gravity-forms');
+			$tooltips["form_field_validate_abnlookup"] = "<h6>".__('ABN Lookup Field Validation', 'abn-lookup-for-gravity-forms')."</h6>".__('Choose the level of validation required for the ABN Lookup field.', 'abn-lookup-for-gravity-forms');
+			$tooltips["form_field_enable_abnlookup_gst"] = "<h6>".__('Enable ABN Lookup GST', 'abn-lookup-for-gravity-forms')."</h6>".__('Check this box to link the field with an ABN Lookup field.', 'abn-lookup-for-gravity-forms');
+			$tooltips["form_field_link_abnlookup"] = "<h6>".__('Link ABN Lookup field', 'abn-lookup-for-gravity-forms')."</h6>".__('Select the ABN Lookup field to link to.', 'abn-lookup-for-gravity-forms');
+			$tooltips["form_field_enable_abnlookup_entity_results"] = "<h6>".__('ABN Lookup Results Field', 'abn-lookup-for-gravity-forms')."</h6>".__('Check this box to link the field with an ABN Lookup field.', 'abn-lookup-for-gravity-forms');
 			return $tooltips;
 		}
 
@@ -542,7 +542,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 		function add_abnlookup_formeditor_tab( $tabs, $form ) {
 			$tabs[] = array(
 				'id'             => 'abr',
-				'title'          => ABR_LOOKUP,
+				'title'          => __('ABN Lookup', 'abn-lookup-for-gravity-forms'),
 				'toggle_classes' => array( 'abrbutton' ),
 				'body_classes'   => array( 'abr' )
 			);
@@ -554,29 +554,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li class="abnlookup_field_setting field_setting" style="display:list-item;">
 					<input type="checkbox" id="field_enable_abnlookup" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="field_enable_abnlookup" class="inline">
-						<?php echo ABR_FIELD; ?>
+						<?php echo __('ABN Lookup Field', 'abn-lookup-for-gravity-forms'); ?>
 					</label>
 					<?php gform_tooltip( "form_field_enable_abnlookup" ) ?><br/>
 				</li>
 
 				<li class="abnlookup_validate_field_setting field_setting" style="background:rgb(244, 244, 244) none repeat scroll 0px 0px; padding: 10px; border-bottom: 1px solid grey; margin-top: 10px;">
 					<label for="field_validate_abnlookup" >
-							<?php echo ABR_VALIDATION; ?>
+							<?php echo __('ABN Lookup Field Validation', 'abn-lookup-for-gravity-forms'); ?>
 							<?php gform_tooltip( "form_field_validate_abnlookup" ) ?>
 					</label>
 					<select id="field_validate_abnlookup" onBlur="SetFieldProperty( 'field_validate_abnlookup', this.value);">
-						<option value="none"><?php echo ABR_NONE; ?></option>
-						<option value="validabn"><?php echo ABR_VALID; ?></option>
-						<option value="activeabn"><?php echo ABR_ACTIVE; ?></option>
-						<option value="reggst"><?php echo ABR_REG; ?></option>
-						<option value="notreggst"><?php echo ABR_NOTREG; ?></option>
+						<option value="none"><?php echo __('None', 'abn-lookup-for-gravity-forms'); ?></option>
+						<option value="validabn"><?php echo __('Valid ABN', 'abn-lookup-for-gravity-forms'); ?></option>
+						<option value="activeabn"><?php echo __('Active ABN', 'abn-lookup-for-gravity-forms'); ?></option>
+						<option value="reggst"><?php echo __('Registered for GST', 'abn-lookup-for-gravity-forms'); ?></option>
+						<option value="notreggst"><?php echo __('Not Registered for GST', 'abn-lookup-for-gravity-forms'); ?></option>
 					</select>
 				</li>
 
 				<li class="abnlookup_entity_results_setting field_setting" style="display:list-item;">
 					<input type="checkbox" id="abnlookup_entity_results" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="abnlookup_entity_results" class="inline">
-						<?php echo ABR_RESULT; ?>
+						<?php echo __('ABN Lookup Results Field', 'abn-lookup-for-gravity-forms'); ?>
 					</label>
 					<?php gform_tooltip( "form_field_enable_abnlookup_entity_results" ) ?><br/>
 				</li>
@@ -584,31 +584,31 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li class="abnlookup_entity_results_field_setting_text field_setting" style="background:rgb(244, 244, 244) none repeat scroll 0px 0px; padding-top: 10px; padding-right: 10px; padding-left: 10px; margin: 10px 0px -10px;" >
 					<input type="radio" id="abnlookup_entity_type" name="abnlookup_enable_entity_results" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="abnlookup_entity_type" class="inline">
-						<?php echo ABR_TYPE; ?>
+						<?php echo __('Entity Type', 'abn-lookup-for-gravity-forms'); ?>
 					</label><br>
 					<input type="radio" id="abnlookup_entity_name" name="abnlookup_enable_entity_results" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="abnlookup_entity_name" class="inline">
-						<?php echo ABR_NAME; ?>
+						<?php echo __('Entity Name', 'abn-lookup-for-gravity-forms'); ?>
 					</label><br>
 					<input type="radio" id="abnlookup_entity_status" name="abnlookup_enable_entity_results" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="abnlookup_entity_status" class="inline">
-						<?php echo ABR_STATUS; ?>
+						<?php echo __('ABN Status', 'abn-lookup-for-gravity-forms'); ?>
 					</label><br>
 					<input type="radio" id="abnlookup_entity_postcode" name="abnlookup_enable_entity_results" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="abnlookup_entity_postcode" class="inline">
-						<?php echo ABR_POSTCODE; ?>
+						<?php echo __('Entity Postcode', 'abn-lookup-for-gravity-forms'); ?>
 					</label><br>
 					<input type="radio" id="abnlookup_entity_state" name="abnlookup_enable_entity_results" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="abnlookup_entity_state" class="inline">
-						<?php echo ABR_STATE; ?>
+						<?php echo __('Entity State/Territory', 'abn-lookup-for-gravity-forms'); ?>
 					</label>
 				</li>
 
 				<li class="abnlookup_gst_field_setting field_setting" style="display:list-item;">
-					<p><strong><?php echo ABR_LOOKUP; ?></strong></p>
+					<p><strong><?php echo __('ABN Lookup', 'abn-lookup-for-gravity-forms'); ?></strong></p>
 					<input type="checkbox" id="field_enable_abnlookup_gst" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="field_enable_abnlookup_gst" class="inline">
-						<?php echo ABR_GST_RESULT; ?>
+						<?php echo __('GST Results Field', 'abn-lookup-for-gravity-forms'); ?>
 					</label>
 					<?php gform_tooltip( "form_field_enable_abnlookup_gst" ) ?><br/>
 				</li>
@@ -616,17 +616,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li class="abnlookup_entity_results_field_setting_date field_setting" style="background:rgb(244, 244, 244) none repeat scroll 0px 0px; padding-top: 10px; padding-right: 10px; padding-left: 10px; margin: 10px 0px -10px;" >
 					<input type="radio" id="abnlookup_entity_effective_from" name="abnlookup_enable_entity_results_date" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="abnlookup_entity_effective_from" class="inline">
-						<?php echo ABR_ENTITY_FROM; ?>
+						<?php echo __('Entity Effective From', 'abn-lookup-for-gravity-forms'); ?>
 					</label><br>
 					<input type="radio" id="abnlookup_gst_effective_from" name="abnlookup_enable_entity_results_date" onclick="itsg_gf_abnlookup_click_function( this )"/>
 					<label for="abnlookup_gst_effective_from" class="inline">
-						<?php echo ABR_GST_FROM; ?>
+						<?php echo __('GST Effective From', 'abn-lookup-for-gravity-forms'); ?>
 					</label><br>
 				</li>
 
 				<li class="abnlookup_link_field_setting field_setting" style="background:rgb(244, 244, 244) none repeat scroll 0px 0px; padding: 10px; border-bottom: 1px solid grey; margin-top: 10px;" >
 				<label for='field_link_abnlookup' >
-					<?php echo ABR_LINK; ?>
+					<?php echo __('Link ABN Lookup field', 'abn-lookup-for-gravity-forms'); ?>
 					<?php gform_tooltip( "form_field_link_abnlookup" ) ?>
 				</label>
 				<select id='field_link_abnlookup' onBlur="SetFieldProperty( 'field_link_abnlookup', this.value);">
