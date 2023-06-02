@@ -1,7 +1,5 @@
 <?php
-/*
- *   Setup the settings page for configuring the options
- */
+
 if ( class_exists( "GFForms" ) ) {
 	GFForms::include_addon_framework();
 	class ITSG_GF_AbnLookup_Settings extends GFAddOn {
@@ -10,8 +8,8 @@ if ( class_exists( "GFForms" ) ) {
 		protected $_slug = "itsg_gf_abnlookup_settings";
 		protected $path = 'abn-lookup-for-gravity-forms/abn-lookup-for-gravity-forms.php';
 		protected $_full_path = __FILE__;
-		protected $_title = __('ABN Lookup for Gravity Forms', 'abn-lookup-for-gravity-forms');
-		protected $_short_title = __('ABN Lookup', 'abn-lookup-for-gravity-forms');
+		protected $_title = 'ABN Lookup for Gravity Forms';
+		protected $_short_title = 'ABN Lookup';
 
 		public function init(){
 			parent::init();
