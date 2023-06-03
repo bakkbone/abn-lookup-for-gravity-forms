@@ -30,19 +30,6 @@ Includes an **easy to use settings page** that allows you to configure:
 
 > See a demo of this plugin at [staging.bkbn.au/abn-lookup-for-gravity-forms](https://staging.bkbn.au/abn-lookup-for-gravity-forms/ "Demonstration Site")
 
-### How do I use the plugin?
-
-1. Install and activate the plugin.
-1. Open the ABN Lookup for Gravity forms settings page (Gravity Forms -> Settings -> ABN Lookup menu) and enter your unique GUID (necessary to use the plugin features - provided by the Australian Business Register, see [web services registration](http://abr.business.gov.au/webservices.aspx "Australian Business Register web services registration website"))
-1. In your form add or edit a 'Single Line Text' field
-1. In the field settings, place a tick next to the 'ABN Lookup field' option
-
-To pre-fill GST status from an ABN Lookup field
-
-1. Add a 'Radio Buttons' field
-1. Place a tick next to the 'GST results field' option
-1. Using the 'Link ABN Lookup field' drop down select the ABN Lookup field to link to the field to
-
 ### Have a suggestion, comment or request?
 
 Please leave a detailed message on the support tab.
@@ -80,6 +67,19 @@ Please take the time to review the plugin. Your feedback is important and will h
 = How do I configure the plugin? =
 
 A range of options can be found under the Gravity Forms 'ABN Lookup' settings menu.
+
+= How do I use the plugin? =
+
+1. Install and activate the plugin.
+1. Open the ABN Lookup for Gravity forms settings page (Gravity Forms -> Settings -> ABN Lookup menu) and enter your unique GUID (necessary to use the plugin features - provided by the Australian Business Register, see [web services registration](http://abr.business.gov.au/webservices.aspx "Australian Business Register web services registration website"))
+1. In your form add or edit a 'Single Line Text' field
+1. In the field settings, place a tick next to the 'ABN Lookup field' option
+
+To pre-fill GST status from an ABN Lookup field:
+
+1. Add a 'Radio Buttons' field
+1. Place a tick next to the 'GST results field' option
+1. Using the 'Link ABN Lookup field' drop down select the ABN Lookup field to link to the field to
 
 = How do I change the value attribute of the GST result field? =
 
