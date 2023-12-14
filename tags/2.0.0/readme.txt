@@ -118,6 +118,8 @@ function my_itsg_gf_abnlookup_gst_value_no( $text_no, $form_id ) {
 ### 2.0.0
 * ADD: Business Names retrieval on Dropdown field
 * DEV: Upgrade to API v202001
+* TWEAK: Improve display of Check ABN button
+* TWEAK: Replace indicator graphics
 ### 1.9.3
 * DEV: Mitigate effect on add-on of `gform_post_conditional_logic` being called by GF core so often
 * TEST: Tested WP 6.4
