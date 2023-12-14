@@ -58,7 +58,7 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 									gform_abnlookup_entity_state_field_input.val('').change();
 									gform_abnlookup_entity_effective_from_input.val('').change();
 									gform_abnlookup_gst_effective_from_input.val('').change();
-									gform_abnlookup_business_name_options.remove();
+									jQuery('.gform_abnlookup_business_name_field_' + field_id + ' option').remove();
 									gform_abnlookup_entity_gst_field_yes.prop( 'disabled', false );
 									gform_abnlookup_entity_gst_field_no.prop( 'disabled', false );
 									gform_abnlookup_entity_gst_field_yes.prop( 'checked', false ).change().keyup();
@@ -94,7 +94,7 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 									} else if ( gform_abnlookup_entity_effective_from_input.hasClass('ymd_slash') ) {
 										var entityEffectiveFromFormatted = year + '/' + month + '/' + date;
 									} else if ( gform_abnlookup_entity_effective_from_input.hasClass('ymd_dash') ) {
-										var entityEffectiveFromFormatted = year + '-' + month + '-' + date;businessEntity202001
+										var entityEffectiveFromFormatted = year + '-' + month + '-' + date;
 									} else if ( gform_abnlookup_entity_effective_from_input.hasClass('ymd_dot') ) {
 										var entityEffectiveFromFormatted = year + '.' + month + '.' + date;
 									} else {
@@ -143,7 +143,7 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 									}
 									
 									if (typeof businessNames !== 'undefined') {
-										gform_abnlookup_business_name_options.remove();
+										jQuery('.gform_abnlookup_business_name_field_' + field_id + ' option').remove();
 										var entityNameOption = new Option(entityName, entityName, true, true);
 										gform_abnlookup_business_name_select.append(entityNameOption);
 										businessNames.forEach(function(item, index, arr) {
@@ -151,7 +151,7 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 											gform_abnlookup_business_name_select.append(thisNameOption);
 										});
 									} else {
-										gform_abnlookup_business_name_options.remove();
+										jQuery('.gform_abnlookup_business_name_field_' + field_id + ' option').remove();
 										var entityNameOption = new Option(entityName, entityName, true, true);
 										gform_abnlookup_business_name_select.append(entityNameOption);
 									}
@@ -331,7 +331,7 @@ function itsg_gf_abnlookup_function( field_id, field_validate_abnlookup, field_d
 				gform_abnlookup_entity_postcode_field_input.val('').change();
 				gform_abnlookup_entity_state_field_input.val('').change();
 				gform_abnlookup_entity_effective_from_input.val('').change();
-				gform_abnlookup_business_name_options.remove();
+				jQuery('.gform_abnlookup_business_name_field_' + field_id + ' option').remove();
 				gform_abnlookup_gst_effective_from_input.val('').change();
 				gform_abnlookup_entity_gst_field_yes.prop( 'disabled', false );
 				gform_abnlookup_entity_gst_field_no.prop( 'disabled', false );
