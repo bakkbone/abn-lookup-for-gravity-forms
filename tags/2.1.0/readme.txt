@@ -1,7 +1,7 @@
 === ABN Lookup for Gravity Forms ===
 Contributors: bakkbone,ovann86
 Donate link: https://ko-fi.com/bakkbone_scott
-Tags: gravity forms, forms, ajax, abn, australian business number, australian business register
+Tags: gravity forms, forms, abn, australian business number, australian business register
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
