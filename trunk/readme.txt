@@ -5,7 +5,7 @@ Tags: gravity forms, forms, abn, australian business number, australian business
 Requires at least: 6.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GNU General Public License (GPL) 3.0
 License URI: https://www.gnu.org/licenses/gpl.html
 
