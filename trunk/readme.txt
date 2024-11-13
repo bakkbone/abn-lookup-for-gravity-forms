@@ -115,6 +115,9 @@ function my_itsg_gf_abnlookup_gst_value_no( $text_no, $form_id ) {
 1. Shows ABN Lookup field after returning values, complete with pre-filled fields.
 
 == Changelog ==
+### 2.2.0
+* DEV: Bring plugin in line with current WP.org standards
+* TEST: Tested WP 6.7
 ### 2.1.2
 * DEV: Fix fatal error caused by parsing of admin warnings
 ### 2.1.1
