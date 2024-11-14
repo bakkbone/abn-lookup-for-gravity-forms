@@ -3,7 +3,7 @@ Contributors: bakkbone,ovann86
 Donate link: https://ko-fi.com/bakkbone_scott
 Tags: gravity forms, forms, abn, australian business number, australian business register
 Requires at least: 6.0
-Tested up to: 6.
+Tested up to: 6.7
 Requires PHP: 7.4
 Stable tag: 2.2.0
 License: GNU General Public License (GPL) 3.0
